@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copiar Texto</title>
+</head>
+<body>
+  <div>
+    <p id="textoACopiar">Este es el texto que quieres copiar.</p>
+    <button onclick="copiarTexto()">Copiar Texto</button>
+  </div>
+
+  <script>
+    function copiarTexto() {
+      var texto = document.getElementById("textoACopiar");
+      var seleccion = window.getSelection();
+      var rango = document.createRange();
+      rango.selectNodeContents(texto);
+      seleccion.removeAllRanges();
+      seleccion.addRange(rango);
+      document.execCommand("copy");
+      seleccion.removeAllRanges();
+      alert("El texto se ha copiado al portapapeles.");
+    }
+  </script>
+</body>
+</html>
